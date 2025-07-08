@@ -20,7 +20,23 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: OverviewRoute.page, path: 'overview'),
         AutoRoute(page: HotelsRoute.page, path: 'hotels'),
         AutoRoute(page: FavouritesRoute.page, path: 'favourites'),
-        AutoRoute(page: AccountRoute.page, path: 'account'),
+        AutoRoute(
+          page: AccountWrapperRoute.page,
+          path: 'account',
+          children: [
+            CustomRoute(
+              page: AccountRoute.page,
+              path: '',
+              initial: true,
+              transitionsBuilder: TransitionsBuilders.fadeIn,
+            ),
+            CustomRoute(
+              page: SettingsRoute.page,
+              path: 'settings',
+              transitionsBuilder: TransitionsBuilders.fadeIn,
+            ),
+          ],
+        ),
       ],
     ),
   ];

@@ -1,3 +1,26 @@
 {
-    "no_internet_connection_msg": "لا يوجد اتصال بالإنترنت"
+    "no_internet_connection_msg": "لا يوجد اتصال بالإنترنت",
+    "overview": "نظرة عامة",
+    "account": "الحساب",
+    "hotels": "الفنادق",
+    "favorites": "المفضلة",
+    "unable_to_get_response_msg": "غير قادر على الحصول على استجابة",
+    "defaultErrorMsg": "حدث خطأ مع رمز الحالة: {statusCode}",
+    "@defaultErrorMsg": {
+        "description": "Default error message when an error occurs with a specific status code.",
+        "placeholders": {
+            "statusCode": {
+                "type": "int"
+            }
+        }
+    },
+    "language": "اللغة",
+    "change_language": "تغيير اللغة",
+    "en": "English",
+    "ar": "العربية",
+    "et": "Estonian",
+    "pt": "Portuguese",
+    "de": "German",
+    "select_language": "اختر اللغة",
+    "settings": "الإعدادات"
 }

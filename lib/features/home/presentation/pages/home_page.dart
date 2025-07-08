@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
         OverviewRoute(),
         HotelsRoute(),
         FavouritesRoute(),
-        AccountRoute(),
+        AccountWrapperRoute(),
       ],
       builder: (context, child) {
         final router = AutoTabsRouter.of(context);

@@ -18,10 +18,8 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(
-      _current != null,
-      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
-    );
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
@@ -43,10 +41,8 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(
-      instance != null,
-      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
-    );
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -66,22 +62,42 @@ class S {
 
   /// `Overview`
   String get overview {
-    return Intl.message('Overview', name: 'overview', desc: '', args: []);
+    return Intl.message(
+      'Overview',
+      name: 'overview',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Account`
   String get account {
-    return Intl.message('Account', name: 'account', desc: '', args: []);
+    return Intl.message(
+      'Account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Hotels`
   String get hotels {
-    return Intl.message('Hotels', name: 'hotels', desc: '', args: []);
+    return Intl.message(
+      'Hotels',
+      name: 'hotels',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Favorites`
   String get favorites {
-    return Intl.message('Favorites', name: 'favorites', desc: '', args: []);
+    return Intl.message(
+      'Favorites',
+      name: 'favorites',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Unable to get response`
@@ -104,6 +120,96 @@ class S {
       args: [statusCode],
     );
   }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Language`
+  String get change_language {
+    return Intl.message(
+      'Change Language',
+      name: 'change_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get en {
+    return Intl.message(
+      'English',
+      name: 'en',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arabic`
+  String get ar {
+    return Intl.message(
+      'Arabic',
+      name: 'ar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Estonian`
+  String get et {
+    return Intl.message(
+      'Estonian',
+      name: 'et',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Portuguese`
+  String get pt {
+    return Intl.message(
+      'Portuguese',
+      name: 'pt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `German`
+  String get de {
+    return Intl.message(
+      'German',
+      name: 'de',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Language`
+  String get select_language {
+    return Intl.message(
+      'Select Language',
+      name: 'select_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -115,7 +221,6 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
       Locale.fromSubtags(languageCode: 'ar'),
       Locale.fromSubtags(languageCode: 'de'),
       Locale.fromSubtags(languageCode: 'pt'),
-      Locale.fromSubtags(languageCode: 'et'),
     ];
   }
 

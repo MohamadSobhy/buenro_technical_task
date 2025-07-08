@@ -26,12 +26,23 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "ar": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "change_language":
+            MessageLookupByLibrary.simpleMessage("Change Language"),
+        "de": MessageLookupByLibrary.simpleMessage("German"),
         "defaultErrorMsg": m0,
+        "en": MessageLookupByLibrary.simpleMessage("English"),
+        "et": MessageLookupByLibrary.simpleMessage("Estonian"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
         "hotels": MessageLookupByLibrary.simpleMessage("Hotels"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "no_internet_connection_msg":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
         "overview": MessageLookupByLibrary.simpleMessage("Overview"),
+        "pt": MessageLookupByLibrary.simpleMessage("Portuguese"),
+        "select_language":
+            MessageLookupByLibrary.simpleMessage("Select Language"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "unable_to_get_response_msg":
             MessageLookupByLibrary.simpleMessage("Unable to get response")
       };

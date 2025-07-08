@@ -13,5 +13,14 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "language": "Language",
+    "change_language": "Change Language",
+    "en": "English",
+    "ar": "Arabic",
+    "et": "Estonian",
+    "pt": "Portuguese",
+    "de": "German",
+    "select_language": "Select Language",
+    "settings": "Settings"
 }
