@@ -1,0 +1,17 @@
+{
+    "no_internet_connection_msg": "No internet connection",
+    "overview": "Overview",
+    "account": "Account",
+    "hotels": "Hotels",
+    "favorites": "Favorites",
+    "unable_to_get_response_msg": "Unable to get response",
+    "defaultErrorMsg": "An Error occures with StatusCode : {statusCode}",
+    "@defaultErrorMsg": {
+        "description": "Default error message when an error occurs with a specific status code.",
+        "placeholders": {
+            "statusCode": {
+                "type": "int"
+            }
+        }
+    }
+}

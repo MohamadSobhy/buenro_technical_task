@@ -1,68 +1,48 @@
+import 'package:buenro_technical_task/app_module.dart';
+import 'package:buenro_technical_task/app_widget.dart';
+import 'package:buenro_technical_task/injection_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'core/api/remote_api_service.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        fontFamily: 'Poppins',
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  /// initialize service locator
+  await initServiceLocator();
 
-  final String title;
+  // To load the .env file contents into dotenv.
+  // NOTE: fileName defaults to .env and can be omitted in this case.
+  // Ensure that the filename corresponds to the path in step 1 and 2.
+  await dotenv.load(fileName: "assets/.env");
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+  /// Init App Colors and Styles
+  AppModule.I
+    ..useMaterial3 = true
+    // Set the default Font Family for the app
+    ..defaultFontFamily = 'Poppins'
+    // Set the secondary Font Family for the app
+    ..secondaryFontFamily = 'Poppins';
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  // TODO: In case you need to change the app colors and styles, Do it like that and then refresh the state
+  // ..setAppColors(MobileAppColors.instance)
+  // ..setAppStyles(MobileAppStyles.instance)
+  // ..setAppShadows(MobileAppShadows.instance)
+  // ..setAppBorders(MobileAppBorders.instance);
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  Provider.debugCheckInvalidValueType = null;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+  /// Setup Remote Data Service and add the API Key
+  RemoteApiService.api.init();
+  RemoteApiService.api.token = dotenv.get('API_KEY', fallback: '');
 
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
+  runApp(const BuenroTechnicalTaskApp());
 }
