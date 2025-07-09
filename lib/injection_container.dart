@@ -54,7 +54,7 @@ Future<void> initServiceLocator() async {
 
   //? Hotels Repositories
   servLocator.registerLazySingleton<HotelsRepository>(
-    () => AppHotelsRepositories(
+    () => AppHotelsRepository(
       callHandler: servLocator(),
       remoteDataSource: servLocator(),
       localDataSource: servLocator(),

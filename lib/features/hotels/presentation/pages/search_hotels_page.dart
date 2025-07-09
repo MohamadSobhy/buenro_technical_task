@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app_module.dart';
+import '../../../../core/constants/constant_keys.dart';
 import '../../../../core/enums/app_toast_mode.dart';
 import '../../../../core/routes/app_router.gr.dart';
 import '../../../../core/theme/app_dimensions.dart';
@@ -52,6 +53,7 @@ class SearchHotelsPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     AppTextField(
+                      key: ConstantKeys.kQuerySearchFieldKey,
                       controller: _searchController,
                       hintText: translations.where,
                     ),
@@ -60,6 +62,7 @@ class SearchHotelsPage extends StatelessWidget {
                       children: [
                         Expanded(
                           child: AppTextField.date(
+                            key: ConstantKeys.kCheckInDateKey,
                             controller: _checkInDateController,
                             hintText: translations.check_in_date,
                             firstDate: DateTime.now(),
@@ -71,6 +74,7 @@ class SearchHotelsPage extends StatelessWidget {
                         const SizedBox(width: AppDimensions.mediumSidePadding),
                         Expanded(
                           child: AppTextField.date(
+                            key: ConstantKeys.kCheckOutDateKey,
                             controller: _checkOutDateController,
                             hintText: translations.check_out_date,
                             firstDate:
@@ -87,12 +91,14 @@ class SearchHotelsPage extends StatelessWidget {
                     ),
                     const SizedBox(height: AppDimensions.largeSidePadding),
                     AppTextField(
+                      key: ConstantKeys.kNumberOfAdultsFieldKey,
                       controller: _numberOfAdultsController,
                       hintText: translations.number_of_adults,
                       textInputType: TextInputType.numberWithOptions(),
                     ),
                     const SizedBox(height: AppDimensions.largeSidePadding),
                     AppSwitchTile(
+                      key: ConstantKeys.kShowAdsSwitchKey,
                       title: Text(
                         translations.show_ads,
                         style: AppModule.I.appStyles.text3(),
@@ -101,6 +107,7 @@ class SearchHotelsPage extends StatelessWidget {
                     ),
                     const SizedBox(height: AppDimensions.largeSidePadding),
                     AppActionButton.submit(
+                      key: ConstantKeys.kSearchBtnKey,
                       onPressed: () => _searchForHotelsCallback(context),
                       text: translations.search_for_hotels,
                     ),

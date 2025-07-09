@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:buenro_technical_task/core/errors/exceptions.dart';
 import 'package:flutter/foundation.dart';
@@ -19,7 +20,7 @@ class AppHotelsLocalDataSource extends HotelsLocalDataSource {
 
   AppHotelsLocalDataSource({required this.hive});
 
-  Future<Box?> _initDatabase(String boxName) async {
+  Future<Box> _initDatabase(String boxName) async {
     try {
       if (!kIsWeb && !hive.isBoxOpen(boxName)) {
         hive.init((await getApplicationDocumentsDirectory()).path);
@@ -29,7 +30,8 @@ class AppHotelsLocalDataSource extends HotelsLocalDataSource {
       Logger().i("Hive db initialized!");
 
       return await hive.openBox(boxName);
-    } catch (_) {
+    } catch (err) {
+      log(err.toString());
       throw CacheException(
         message: 'Unable to intialize database for box: $boxName',
       );
@@ -40,21 +42,19 @@ class AppHotelsLocalDataSource extends HotelsLocalDataSource {
   Future<List<SearchDataModel>> fetchLatestSearchInfo() async {
     final searchesBox = await _initDatabase(ConstantKeys.latestSearchesBoxKey);
 
-    if (searchesBox != null) {
-      final searchDataString = searchesBox.get(
-        ConstantKeys.latestSearchesDataKey,
-      );
+    final searchDataString = searchesBox.get(
+      ConstantKeys.latestSearchesDataKey,
+    );
 
-      if (searchDataString != null) {
-        final seacrhDataJson =
-            (json.decode(searchDataString) ?? []) as List<dynamic>;
+    if (searchDataString != null) {
+      final seacrhDataJson =
+          (json.decode(searchDataString) ?? []) as List<dynamic>;
 
-        final searchesData = seacrhDataJson
-            .map((e) => SearchDataModel.fromJson(e))
-            .toList();
+      final searchesData = seacrhDataJson
+          .map((e) => SearchDataModel.fromJson(e))
+          .toList();
 
-        return searchesData;
-      }
+      return searchesData;
     }
 
     return [];
@@ -64,18 +64,14 @@ class AppHotelsLocalDataSource extends HotelsLocalDataSource {
   Future<SearchDataModel> saveSearchInfo(SearchDataModel searchInfo) async {
     final searchesBox = await _initDatabase(ConstantKeys.latestSearchesBoxKey);
 
-    if (searchesBox != null) {
-      final prevSearchesData = await fetchLatestSearchInfo();
-      prevSearchesData.add(searchInfo);
+    final prevSearchesData = await fetchLatestSearchInfo();
+    prevSearchesData.add(searchInfo);
 
-      await searchesBox.put(
-        ConstantKeys.latestSearchesDataKey,
-        json.encode(prevSearchesData.toSet().map((e) => e.toJson()).toList()),
-      );
+    await searchesBox.put(
+      ConstantKeys.latestSearchesDataKey,
+      json.encode(prevSearchesData.toSet().map((e) => e.toJson()).toList()),
+    );
 
-      return searchInfo;
-    }
-
-    throw const CacheException(message: "Error caching search data!");
+    return searchInfo;
   }
 }

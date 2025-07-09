@@ -418,7 +418,7 @@ class _AppTextFieldState extends State<AppTextField> {
           borderRadius: widget.borderRadius ?? fieldTheme.borderRadius,
         ),
         child: TextFormField(
-          key: widget.key,
+          // key: widget.key,
           controller: _controller,
           autovalidateMode:
               fieldTheme.autovalidateMode ?? AutovalidateMode.disabled,
