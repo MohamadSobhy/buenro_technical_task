@@ -176,3 +176,83 @@ dev_dependencies:
   # Mocking for Testing
   mocktail: ^1.0.4
 ```
+
+---
+
+### Project Structure and Architecture
+I follow the Clean Code Architecture. Here is the project structure
+
+```
+- lib
+    - core
+        - api
+        - network
+        - errors
+        - theme
+        - extensions
+        - widgets
+        - constants
+        - localization
+        - routes
+    - features
+        - home
+            - data
+            - domain
+            - presentation
+                - pages
+                - widgets
+        - overview
+            - data
+            - domain
+            - presentation
+                - pages
+                - widgets
+        - favourites
+            - data
+                - datasources
+                - models
+                - repositories
+            - domain
+                - entities
+                - usecases
+                - repositories
+            - presentation
+                - blocs
+                - pages
+                - widgets
+        - account
+            - data
+            - domain
+            - presentation
+                - pages
+                - widgets
+        - hotels
+            - data
+                - datasources
+                - models
+                - repositories
+            - domain
+                - entities
+                - usecases
+                - repositories
+            - presentation
+                - blocs
+                - pages
+                - widgets
+- test
+    - core
+    - features
+        - hotels
+            - data
+                - datasources
+                - models
+                - repositories
+            - domain
+                - entities
+                - usecases
+                - repositories
+            - presentation
+                - blocs
+                - pages
+                - widgets
+```
