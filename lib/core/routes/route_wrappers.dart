@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
-import '../../features/hotels/presentation/hotels_bloc/hotels_bloc.dart';
+import '../../features/hotels/presentation/blocs/hotels_bloc/hotels_bloc.dart';
+import '../../features/hotels/presentation/blocs/latest_searches_bloc/latest_searches_bloc.dart';
 import '../../injection_container.dart';
 
 @RoutePage()
@@ -26,6 +28,19 @@ class HotelsWrapperPage extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(context) {
-    return BlocProvider.value(value: servLocator<HotelsBloc>(), child: this);
+    return MultiProvider(
+      providers: [
+        BlocProvider.value(value: servLocator<HotelsBloc>()),
+        BlocProvider(
+          create: (_) {
+            final bloc = servLocator<LatestSearchesBloc>();
+            bloc.add(FetchedLatestSearchesEvent());
+
+            return bloc;
+          },
+        ),
+      ],
+      child: this,
+    );
   }
 }

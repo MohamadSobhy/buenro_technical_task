@@ -13,7 +13,10 @@ import '../../../../core/widgets/app_text_field.dart';
 import '../../../../core/widgets/app_toast/app_toast.dart';
 import '../../../../core/widgets/navigation_app_bar.dart';
 import '../../../../generated/l10n.dart';
-import '../hotels_bloc/hotels_bloc.dart';
+import '../../domain/entities/search_data.dart';
+import '../blocs/hotels_bloc/hotels_bloc.dart';
+import '../blocs/latest_searches_bloc/latest_searches_bloc.dart';
+import '../widgets/latest_search_item_view.dart';
 import 'hotels_page.dart';
 
 @RoutePage()
@@ -37,67 +40,127 @@ class SearchHotelsPage extends StatelessWidget {
       appBar: NavigationAppBar(title: translations.search_for_hotels),
       body: Padding(
         padding: const EdgeInsets.all(AppDimensions.defaultSidePadding),
-        child: Card(
-          margin: EdgeInsets.zero,
-          color: AppModule.I.appColors.lightCanvasColor,
-          child: Padding(
-            padding: const EdgeInsets.all(AppDimensions.defaultSidePadding),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AppTextField(
-                  controller: _searchController,
-                  hintText: translations.where,
-                ),
-                const SizedBox(height: AppDimensions.mediumSidePadding),
-                Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Card(
+              margin: EdgeInsets.zero,
+              color: AppModule.I.appColors.lightCanvasColor,
+              child: Padding(
+                padding: const EdgeInsets.all(AppDimensions.defaultSidePadding),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Expanded(
-                      child: AppTextField.date(
-                        controller: _checkInDateController,
-                        hintText: translations.check_in_date,
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime.now().add(const Duration(days: 365)),
-                      ),
+                    AppTextField(
+                      controller: _searchController,
+                      hintText: translations.where,
                     ),
-                    const SizedBox(width: AppDimensions.mediumSidePadding),
-                    Expanded(
-                      child: AppTextField.date(
-                        controller: _checkOutDateController,
-                        hintText: translations.check_out_date,
-                        firstDate:
-                            DateTime.tryParse(_checkInDateController.text) ??
-                            DateTime.now().add(const Duration(days: 1)),
-                        lastDate: DateTime.now().add(const Duration(days: 365)),
+                    const SizedBox(height: AppDimensions.mediumSidePadding),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: AppTextField.date(
+                            controller: _checkInDateController,
+                            hintText: translations.check_in_date,
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime.now().add(
+                              const Duration(days: 365),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: AppDimensions.mediumSidePadding),
+                        Expanded(
+                          child: AppTextField.date(
+                            controller: _checkOutDateController,
+                            hintText: translations.check_out_date,
+                            firstDate:
+                                DateTime.tryParse(
+                                  _checkInDateController.text,
+                                ) ??
+                                DateTime.now().add(const Duration(days: 1)),
+                            lastDate: DateTime.now().add(
+                              const Duration(days: 365),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: AppDimensions.largeSidePadding),
+                    AppTextField(
+                      controller: _numberOfAdultsController,
+                      hintText: translations.number_of_adults,
+                      textInputType: TextInputType.numberWithOptions(),
+                    ),
+                    const SizedBox(height: AppDimensions.largeSidePadding),
+                    AppSwitchTile(
+                      title: Text(
+                        translations.show_ads,
+                        style: AppModule.I.appStyles.text3(),
                       ),
+                      onChanged: (isChecked) => _showAds = isChecked,
+                    ),
+                    const SizedBox(height: AppDimensions.largeSidePadding),
+                    AppActionButton.submit(
+                      onPressed: () => _searchForHotelsCallback(context),
+                      text: translations.search_for_hotels,
                     ),
                   ],
                 ),
-                const SizedBox(height: AppDimensions.largeSidePadding),
-                AppTextField(
-                  controller: _numberOfAdultsController,
-                  hintText: translations.number_of_adults,
-                  textInputType: TextInputType.numberWithOptions(),
-                ),
-                const SizedBox(height: AppDimensions.largeSidePadding),
-                AppSwitchTile(
-                  title: Text(
-                    translations.show_ads,
-                    style: AppModule.I.appStyles.text3(),
-                  ),
-                  onChanged: (isChecked) => _showAds = isChecked,
-                ),
-                const SizedBox(height: AppDimensions.largeSidePadding),
-                AppActionButton.submit(
-                  onPressed: () => _searchForHotelsCallback(context),
-                  text: translations.search_for_hotels,
-                ),
-              ],
+              ),
             ),
-          ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: AppDimensions.defaultSidePadding,
+                ),
+                child: BlocBuilder<LatestSearchesBloc, LatestSearchesState>(
+                  builder: (ctx, state) {
+                    if (state is LatestSearchesFetchedState) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(translations.latest_searches),
+                          const SizedBox(
+                            height: AppDimensions.mediumSidePadding,
+                          ),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              padding: EdgeInsets.zero,
+                              child: Wrap(
+                                runAlignment: WrapAlignment.start,
+                                spacing: AppDimensions.mediumSidePadding,
+                                runSpacing: AppDimensions.mediumSidePadding,
+                                children: state.searches
+                                    .map(
+                                      (searchInfo) => LatestSearchItemView(
+                                        searchData: searchInfo,
+                                        onSelect: _onLatestSearchSelected,
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+
+                    return SizedBox();
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  void _onLatestSearchSelected(SearchData searchData) {
+    _searchController.text = searchData.query;
+    _checkInDateController.text = searchData.checkInDate;
+    _checkOutDateController.text = searchData.checkOutDate;
+    _numberOfAdultsController.text = searchData.numberOfAdults.toString();
   }
 
   void _searchForHotelsCallback(BuildContext context) {
@@ -117,20 +180,26 @@ class SearchHotelsPage extends StatelessWidget {
         query: _searchController.text.trim(),
         checkInDate: _checkInDateController.text,
         checkOutDate: _checkOutDateController.text,
+        numberOfAdults: int.tryParse(_numberOfAdultsController.text) ?? 1,
       ),
     );
 
     final router = AutoRouter.of(context);
-    router.push(
-      HotelsRoute(
-        args: HotelsPageArgs(
-          query: _searchController.text.trim(),
-          checkInDate: _checkInDateController.text,
-          checkOutDate: _checkOutDateController.text,
-          numberOfAdults: int.tryParse(_numberOfAdultsController.text) ?? 1,
-          showAds: _showAds,
-        ),
-      ),
-    );
+    router
+        .push(
+          HotelsRoute(
+            args: HotelsPageArgs(
+              query: _searchController.text.trim(),
+              checkInDate: _checkInDateController.text,
+              checkOutDate: _checkOutDateController.text,
+              numberOfAdults: int.tryParse(_numberOfAdultsController.text) ?? 1,
+              showAds: _showAds,
+            ),
+          ),
+        )
+        .then((_) {
+          final bloc = context.read<LatestSearchesBloc>();
+          bloc.add(FetchedLatestSearchesEvent());
+        });
   }
 }

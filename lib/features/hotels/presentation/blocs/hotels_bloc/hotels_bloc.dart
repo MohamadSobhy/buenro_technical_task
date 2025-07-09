@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/entities/properties_response.dart';
-import '../../domain/entities/property.dart';
-import '../../domain/usecases/search_for_hotels.dart';
+import '../../../domain/entities/properties_response.dart';
+import '../../../domain/entities/property.dart';
+import '../../../domain/usecases/search_for_hotels.dart';
 
 part 'hotels_event.dart';
 part 'hotels_state.dart';

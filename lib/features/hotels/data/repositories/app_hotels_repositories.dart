@@ -1,16 +1,21 @@
 import '../../../../core/api/typedefs.dart';
 import '../../../../core/errors/repository_call_handler.dart';
 import '../../domain/entities/properties_response.dart';
+import '../../domain/entities/search_data.dart';
 import '../../domain/repositories/hotels_repository.dart';
+import '../datasources/hotels_local_data_source.dart';
 import '../datasources/hotels_remote_data_source.dart';
+import '../models/search_data_model.dart';
 
 class AppHotelsRepositories extends HotelsRepository {
   final RepositoryCallHandler callHandler;
   final HotelsRemoteDataSource remoteDataSource;
+  final HotelsLocalDataSource localDataSource;
 
   AppHotelsRepositories({
     required this.callHandler,
     required this.remoteDataSource,
+    required this.localDataSource,
   });
 
   @override
@@ -21,14 +26,30 @@ class AppHotelsRepositories extends HotelsRepository {
     required String? nextPageToken,
     int numberOfAdults = 1,
   }) {
-    return callHandler.handleCall(
-      () => remoteDataSource.searchForHotels(
+    localDataSource.saveSearchInfo(
+      SearchDataModel(
+        query: query,
+        checkInDate: checkInDate,
+        checkOutDate: checkOutDate,
+        numberOfAdults: numberOfAdults,
+      ),
+    );
+
+    return callHandler.handleCall(() {
+      return remoteDataSource.searchForHotels(
         query: query,
         checkInDate: checkInDate,
         checkOutDate: checkOutDate,
         nextPageToken: nextPageToken,
         numberOfAdults: numberOfAdults,
-      ),
+      );
+    });
+  }
+
+  @override
+  AppResult<List<SearchData>> fetchLatestSearchesInfo() {
+    return callHandler.handleCall(
+      () => localDataSource.fetchLatestSearchInfo(),
     );
   }
 }

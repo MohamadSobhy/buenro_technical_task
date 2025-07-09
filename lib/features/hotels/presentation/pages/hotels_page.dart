@@ -17,7 +17,7 @@ import '../../../../core/widgets/navigation_app_bar.dart';
 import '../../../../core/widgets/scroll_notification_handler.dart';
 import '../../../../core/widgets/side_title.dart';
 import '../../../../generated/l10n.dart';
-import '../hotels_bloc/hotels_bloc.dart';
+import '../blocs/hotels_bloc/hotels_bloc.dart';
 import '../widgets/property_ad_view.dart';
 import '../widgets/property_item_view.dart';
 

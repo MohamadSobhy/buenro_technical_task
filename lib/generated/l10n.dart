@@ -330,6 +330,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Book Hotels easier now!!`
+  String get book_hotels_now {
+    return Intl.message(
+      'Book Hotels easier now!!',
+      name: 'book_hotels_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Latest Searches`
+  String get latest_searches {
+    return Intl.message(
+      'Latest Searches',
+      name: 'latest_searches',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

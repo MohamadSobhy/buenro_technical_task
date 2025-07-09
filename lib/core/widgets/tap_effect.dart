@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TapEffect extends StatefulWidget {
-  const TapEffect({
-    Key? key,
-    this.isClickable = true,
-    required this.onTap,
-    required this.child,
-  }) : super(key: key);
-
   final bool isClickable;
   final VoidCallback? onTap;
   final Widget child;
+
+  const TapEffect({
+    super.key,
+    this.isClickable = true,
+    this.onTap,
+    required this.child,
+  });
 
   @override
   _TapEffectState createState() => _TapEffectState();
@@ -59,7 +59,8 @@ class _TapEffectState extends State<TapEffect>
   Future<void> _onDelayed() async {
     if (widget.isClickable) {
       //this logic creator like more press experience with some delay
-      final int tapDuration = DateTime.now().millisecondsSinceEpoch -
+      final int tapDuration =
+          DateTime.now().millisecondsSinceEpoch -
           tapTime.millisecondsSinceEpoch;
 
       if (tapDuration < 120) {
@@ -92,9 +93,11 @@ class _TapEffectState extends State<TapEffect>
       onTapDown: (TapDownDetails details) {
         if (widget.isClickable) {
           tapTime = DateTime.now();
-          _animationController!.animateTo(0.9,
-              duration: const Duration(milliseconds: 120),
-              curve: Curves.fastOutSlowIn);
+          _animationController!.animateTo(
+            0.9,
+            duration: const Duration(milliseconds: 120),
+            curve: Curves.fastOutSlowIn,
+          );
         }
         isProgress = true;
       },

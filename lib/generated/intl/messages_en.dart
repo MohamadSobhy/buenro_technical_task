@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "ads": MessageLookupByLibrary.simpleMessage("Ads"),
         "ar": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "book_hotels_now":
+            MessageLookupByLibrary.simpleMessage("Book Hotels easier now!!"),
         "change_language":
             MessageLookupByLibrary.simpleMessage("Change Language"),
         "check_in_date": MessageLookupByLibrary.simpleMessage("Check-in Date"),
@@ -45,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please fill in all missing fields"),
         "hotels": MessageLookupByLibrary.simpleMessage("Hotels"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "latest_searches":
+            MessageLookupByLibrary.simpleMessage("Latest Searches"),
         "no_internet_connection_msg":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
         "number_of_adults":
