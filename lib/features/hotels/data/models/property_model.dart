@@ -71,31 +71,61 @@ class PropertyModel extends Property {
   }
 
   @override
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+      'description': description,
+      'check_in_time': checkInTime,
+      'check_out_time': checkOutTime,
+      'nearby_places': nearbyPlaces.map((e) => e.toJson()).toList(),
+      'hotel_class': hotelClass,
+      'extracted_hotel_class': extractedHotelClass,
+      'images': images.map((e) => e.toJson()).toList(),
+      'ratings': ratings.map((e) => e.toJson()).toList(),
+      'location_rating': locationRating,
+      'reviews_breakdown': reviewsBreakdown.map((e) => e.toJson()).toList(),
+      'name': name,
+      'source': source,
+      'source_icon': sourceIcon,
+      'link': link,
+      'property_token': propertyToken,
+      'serpapi_property_details_link': serpapiPropertyDetailsLink,
+      'gps_coordinates': gpsCoordinates.toJson(),
+      'thumbnail': thumbnail,
+      'overall_rating': overallRating,
+      'reviews': reviews,
+      'price': price,
+      'extracted_price': extractedPrice,
+      'amenities': amenities,
+    };
+  }
+
+  @override
   List<Object?> get props => [
-    type,
-    description,
-    checkInTime,
-    checkOutTime,
-    nearbyPlaces,
-    hotelClass,
-    extractedHotelClass,
-    images,
-    ratings,
-    locationRating,
-    reviewsBreakdown,
-    name,
-    source,
-    sourceIcon,
-    link,
+    // type,
+    // description,
+    // checkInTime,
+    // checkOutTime,
+    // nearbyPlaces,
+    // hotelClass,
+    // extractedHotelClass,
+    // images,
+    // ratings,
+    // locationRating,
+    // reviewsBreakdown,
+    // name,
+    // source,
+    // sourceIcon,
+    // link,
     propertyToken,
-    serpapiPropertyDetailsLink,
-    gpsCoordinates,
-    thumbnail,
-    overallRating,
-    reviews,
-    price,
-    extractedPrice,
-    amenities,
+    // serpapiPropertyDetailsLink,
+    // gpsCoordinates,
+    // thumbnail,
+    // overallRating,
+    // reviews,
+    // price,
+    // extractedPrice,
+    // amenities,
   ];
 }
 
@@ -113,6 +143,14 @@ class NearbyPlaceModel extends NearbyPlace {
 
   @override
   List<Object?> get props => [name, transportations];
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'transportations': transportations.map((e) => e.toJson()).toList(),
+    };
+  }
 }
 
 class TransportationModel extends Transportation {
@@ -127,6 +165,11 @@ class TransportationModel extends Transportation {
 
   @override
   List<Object?> get props => [duration, type];
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {'type': type, 'duration': duration};
+  }
 }
 
 class ImageInfoModel extends ImageInfo {
@@ -144,6 +187,11 @@ class ImageInfoModel extends ImageInfo {
 
   @override
   List<Object?> get props => [thumbnail, originalImage];
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {'thumbnail': thumbnail, 'original_image': originalImage};
+  }
 }
 
 class RatingModel extends Rating {
@@ -158,6 +206,11 @@ class RatingModel extends Rating {
 
   @override
   List<Object?> get props => [stars, count];
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {'stars': stars, 'count': count};
+  }
 }
 
 class ReviewsBreakdownModel extends ReviewsBreakdown {
@@ -190,4 +243,16 @@ class ReviewsBreakdownModel extends ReviewsBreakdown {
     negative,
     neutral,
   ];
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'description': description,
+      'total_mentioned': totalMentioned,
+      'positive': positive,
+      'negative': negative,
+      'neutral': neutral,
+    };
+  }
 }

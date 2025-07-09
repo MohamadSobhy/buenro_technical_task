@@ -12,4 +12,9 @@ class GPSCoordinatesModel extends GPSCoordinates {
       longitude: parsedJson['longitude']?.toDouble() ?? 0.0,
     );
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {'latitude': latitude, 'longittude': longitude};
+  }
 }

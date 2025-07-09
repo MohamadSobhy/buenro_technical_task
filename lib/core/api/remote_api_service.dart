@@ -69,6 +69,12 @@ class RemoteApiService implements ApiService {
       final Map<String, Object> builtHeaders = _headerBuilder(headers);
       _client.options.headers.addAll(builtHeaders);
 
+      logger.i(
+        '''[$_tag] Requesting: $url | QueryParams: $query | Headers: ${_client.options.headers} | Method: GET}
+
+[$_tag] Connnecting to: ${_client.options.baseUrl}''',
+      );
+
       final response = await _client.get(_queryBuilder(url, query));
 
       logger.i(

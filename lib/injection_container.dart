@@ -4,6 +4,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'core/errors/repository_call_handler.dart';
 import 'core/localization/localization_controller.dart';
 import 'core/network/network_info.dart';
+import 'features/favourites/data/datasources/favourites_local_data_source.dart';
+import 'features/favourites/data/repositories/app_favourites_repository.dart';
+import 'features/favourites/domain/repositories/favourites_repository.dart';
+import 'features/favourites/domain/usecases/fetch_favourite_properties.dart';
+import 'features/favourites/domain/usecases/toggle_property_favourite_status.dart';
+import 'features/favourites/presentation/favourites_bloc/favourites_bloc.dart';
 import 'features/hotels/data/datasources/hotels_local_data_source.dart';
 import 'features/hotels/data/datasources/hotels_remote_data_source.dart';
 import 'features/hotels/data/repositories/app_hotels_repositories.dart';
@@ -61,5 +67,36 @@ Future<void> initServiceLocator() async {
   );
   servLocator.registerLazySingleton<HotelsLocalDataSource>(
     () => AppHotelsLocalDataSource(hive: servLocator()),
+  );
+
+  //* Favourites Feature
+  //? Favourites Blocs and Controllers
+  servLocator.registerLazySingleton(
+    () => FavouritesBloc(
+      fetchFavouriteProperties: servLocator(),
+      togglePropertyFavouriteStatus: servLocator(),
+    ),
+  );
+
+  //? Favourites Usecases
+  servLocator.registerLazySingleton(
+    () => FetchFavouriteProperties(repository: servLocator()),
+  );
+
+  servLocator.registerLazySingleton(
+    () => TogglePropertyFavouriteStatus(repository: servLocator()),
+  );
+
+  //? Favourites Repositories
+  servLocator.registerLazySingleton<FavouritesRepository>(
+    () => AppFavouritesRepository(
+      callHandler: servLocator(),
+      localDataSource: servLocator(),
+    ),
+  );
+
+  //? Favourites Data Sources
+  servLocator.registerLazySingleton<FavouritesLocalDataSource>(
+    () => AppFavouritesLocalDataSource(hive: servLocator()),
   );
 }

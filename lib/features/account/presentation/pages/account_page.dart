@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:buenro_technical_task/core/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -27,6 +28,24 @@ class AccountPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Column(
+              children: [
+                Icon(
+                  Icons.account_circle_outlined,
+                  size: 150,
+                  color: AppModule.I.appColors.primaryColor,
+                ),
+                const SizedBox(height: AppDimensions.defaultSidePadding),
+                Text(
+                  'Mohammad Sobhy',
+                  style: AppModule.I.appStyles.header5().copyWith(
+                    fontWeight: AppFontWeights.bold,
+                  ),
+                ),
+                const SizedBox(height: AppDimensions.dimen_5),
+                Text('sobhymohamad623@gmail.com'),
+              ],
+            ),
             ListTile(
               leading: const Icon(Icons.language),
               title: Text(translations.change_language),

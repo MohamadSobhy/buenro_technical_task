@@ -1,14 +1,17 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:buenro_technical_task/app_module.dart';
-import 'package:buenro_technical_task/core/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+import '../../../../app_module.dart';
 import '../../../../core/routes/app_router.gr.dart';
+import '../../../../core/widgets/app_scaffold.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../injection_container.dart';
+import '../../../favourites/presentation/favourites_bloc/favourites_bloc.dart';
 
 @RoutePage()
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget implements AutoRouteWrapper {
   static const String routeName = '/home';
 
   const HomePage({super.key});
@@ -37,6 +40,11 @@ class HomePage extends StatelessWidget {
             ),
             currentIndex: router.activeIndex,
             onTap: (index) {
+              if (index == 1 || index == 2) {
+                final bloc = servLocator<FavouritesBloc>();
+                bloc.add(FetchFavouritePropertiesEvent());
+              }
+
               router.setActiveIndex(index);
             },
             items: [
@@ -64,6 +72,14 @@ class HomePage extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider.value(
+      value: servLocator<FavouritesBloc>(),
+      child: this,
     );
   }
 }

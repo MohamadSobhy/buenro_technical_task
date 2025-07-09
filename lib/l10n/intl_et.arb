@@ -1,0 +1,41 @@
+{
+    "no_internet_connection_msg": "Internetiühendus puudub",
+    "overview": "Ülevaade",
+    "account": "Konto",
+    "hotels": "Hotellid",
+    "favorites": "Lemmikud",
+    "unable_to_get_response_msg": "Vastust ei õnnestunud saada",
+    "defaultErrorMsg": "Tekkis viga staatusekoodiga: {statusCode}",
+    "@defaultErrorMsg": {
+        "description": "Vaikimisi veateade, kui ilmneb viga konkreetse staatusekoodiga.",
+        "placeholders": {
+            "statusCode": {
+                "type": "int"
+            }
+        }
+    },
+    "language": "Keel",
+    "change_language": "Muuda keelt",
+    "en": "Inglise",
+    "ar": "Araabia",
+    "et": "Eesti",
+    "pt": "Portugali",
+    "de": "Saksa",
+    "select_language": "Vali keel",
+    "settings": "Seaded",
+    "search_for_hotels": "Otsi hotelle",
+    "search": "Otsi",
+    "enter_search_term": "Sisesta otsingusõna",
+    "close": "Sulge",
+    "check_in_date": "Sisseregistreerimise kuupäev",
+    "check_out_date": "Väljaregistreerimise kuupäev",
+    "where": "Kus?",
+    "fill_missing_fields": "Palun täida kõik puuduvad väljad",
+    "number_of_adults": "Täiskasvanute arv",
+    "retry": "Proovi uuesti",
+    "ads": "Reklaamid",
+    "show_ads": "Näita reklaame",
+    "book_hotels_now": "Broneeri hotellid nüüd lihtsamalt!!",
+    "latest_searches": "Viimased otsingud",
+    "no_favourites_msg": "Sa ei ole lisanud ühtegi hotelli oma lemmikute nimekirja."
+}

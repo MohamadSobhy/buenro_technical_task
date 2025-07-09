@@ -1,3 +1,41 @@
 {
-    "no_internet_connection_msg": "Sem conexão com a internet"
+    "no_internet_connection_msg": "Sem conexão com a internet",
+    "overview": "Visão geral",
+    "account": "Conta",
+    "hotels": "Hotéis",
+    "favorites": "Favoritos",
+    "unable_to_get_response_msg": "Não foi possível obter resposta",
+    "defaultErrorMsg": "Ocorreu um erro com o StatusCode: {statusCode}",
+    "@defaultErrorMsg": {
+        "description": "Mensagem de erro padrão quando ocorre um erro com um código de status específico.",
+        "placeholders": {
+            "statusCode": {
+                "type": "int"
+            }
+        }
+    },
+    "language": "Idioma",
+    "change_language": "Mudar idioma",
+    "en": "Inglês",
+    "ar": "Árabe",
+    "et": "Estoniano",
+    "pt": "Português",
+    "de": "Alemão",
+    "select_language": "Selecionar idioma",
+    "settings": "Configurações",
+    "search_for_hotels": "Pesquisar hotéis",
+    "search": "Pesquisar",
+    "enter_search_term": "Digite um termo de pesquisa",
+    "close": "Fechar",
+    "check_in_date": "Data de check-in",
+    "check_out_date": "Data de check-out",
+    "where": "Onde?",
+    "fill_missing_fields": "Por favor, preencha todos os campos obrigatórios",
+    "number_of_adults": "Número de adultos",
+    "retry": "Tentar novamente",
+    "ads": "Anúncios",
+    "show_ads": "Mostrar anúncios",
+    "book_hotels_now": "Reserve hotéis mais fácil agora!!",
+    "latest_searches": "Últimas pesquisas",
+    "no_favourites_msg": "Você não adicionou nenhum hotel à sua lista de favoritos."
 }

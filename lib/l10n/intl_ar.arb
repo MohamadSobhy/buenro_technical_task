@@ -5,9 +5,9 @@
     "hotels": "الفنادق",
     "favorites": "المفضلة",
     "unable_to_get_response_msg": "غير قادر على الحصول على استجابة",
-    "defaultErrorMsg": "حدث خطأ مع رمز الحالة: {statusCode}",
+    "defaultErrorMsg": "حدث خطأ برمز الحالة: {statusCode}",
     "@defaultErrorMsg": {
-        "description": "Default error message when an error occurs with a specific status code.",
+        "description": "رسالة الخطأ الافتراضية عند حدوث خطأ مع رمز حالة معين.",
         "placeholders": {
             "statusCode": {
                 "type": "int"
@@ -16,11 +16,26 @@
     },
     "language": "اللغة",
     "change_language": "تغيير اللغة",
-    "en": "English",
+    "en": "الإنجليزية",
     "ar": "العربية",
-    "et": "Estonian",
-    "pt": "Portuguese",
-    "de": "German",
+    "et": "الإستونية",
+    "pt": "البرتغالية",
+    "de": "الألمانية",
     "select_language": "اختر اللغة",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "search_for_hotels": "ابحث عن فنادق",
+    "search": "بحث",
+    "enter_search_term": "أدخل مصطلح البحث",
+    "close": "إغلاق",
+    "check_in_date": "تاريخ تسجيل الوصول",
+    "check_out_date": "تاريخ تسجيل المغادرة",
+    "where": "أين؟",
+    "fill_missing_fields": "يرجى ملء جميع الحقول الناقصة",
+    "number_of_adults": "عدد البالغين",
+    "retry": "إعادة المحاولة",
+    "ads": "إعلانات",
+    "show_ads": "عرض الإعلانات",
+    "book_hotels_now": "احجز الفنادق بسهولة الآن!!",
+    "latest_searches": "أحدث عمليات البحث",
+    "no_favourites_msg": "لم تقم بإضافة أي فنادق إلى قائمة المفضلة الخاصة بك."
 }

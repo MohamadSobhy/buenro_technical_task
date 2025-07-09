@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "latest_searches":
             MessageLookupByLibrary.simpleMessage("Latest Searches"),
+        "no_favourites_msg": MessageLookupByLibrary.simpleMessage(
+            "You haven\'t added any Hotels to your favourites list."),
         "no_internet_connection_msg":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
         "number_of_adults":

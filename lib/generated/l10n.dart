@@ -350,6 +350,16 @@ class S {
       args: [],
     );
   }
+
+  /// `You haven't added any Hotels to your favourites list.`
+  String get no_favourites_msg {
+    return Intl.message(
+      'You haven\'t added any Hotels to your favourites list.',
+      name: 'no_favourites_msg',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -360,6 +370,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'ar'),
       Locale.fromSubtags(languageCode: 'de'),
+      Locale.fromSubtags(languageCode: 'et'),
       Locale.fromSubtags(languageCode: 'pt'),
     ];
   }

@@ -54,6 +54,8 @@ abstract class Property extends Equatable {
     required this.extractedPrice,
     required this.amenities,
   });
+
+  Map<String, dynamic> toJson();
 }
 
 abstract class NearbyPlace extends Equatable {
@@ -61,6 +63,8 @@ abstract class NearbyPlace extends Equatable {
   final List<Transportation> transportations;
 
   const NearbyPlace({required this.name, required this.transportations});
+
+  Map<String, dynamic> toJson();
 }
 
 abstract class Transportation extends Equatable {
@@ -68,6 +72,8 @@ abstract class Transportation extends Equatable {
   final String duration;
 
   const Transportation({required this.type, required this.duration});
+
+  Map<String, dynamic> toJson();
 }
 
 abstract class ImageInfo extends Equatable {
@@ -75,6 +81,8 @@ abstract class ImageInfo extends Equatable {
   final String originalImage;
 
   const ImageInfo({required this.thumbnail, required this.originalImage});
+
+  Map<String, dynamic> toJson();
 }
 
 abstract class Rating extends Equatable {
@@ -82,6 +90,8 @@ abstract class Rating extends Equatable {
   final int count;
 
   const Rating({required this.stars, required this.count});
+
+  Map<String, dynamic> toJson();
 }
 
 abstract class ReviewsBreakdown extends Equatable {
@@ -100,4 +110,6 @@ abstract class ReviewsBreakdown extends Equatable {
     required this.negative,
     required this.neutral,
   });
+
+  Map<String, dynamic> toJson();
 }

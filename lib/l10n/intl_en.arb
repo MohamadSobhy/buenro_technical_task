@@ -36,5 +36,6 @@
     "ads": "Ads",
     "show_ads": "Show Ads",
     "book_hotels_now": "Book Hotels easier now!!",
-    "latest_searches": "Latest Searches"
+    "latest_searches": "Latest Searches",
+    "no_favourites_msg": "You haven't added any Hotels to your favourites list."
 }

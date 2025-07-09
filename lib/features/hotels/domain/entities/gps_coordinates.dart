@@ -8,4 +8,6 @@ abstract class GPSCoordinates extends Equatable {
 
   @override
   List<Object?> get props => [latitude, longitude];
+
+  Map<String, dynamic> toJson();
 }

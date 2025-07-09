@@ -1,19 +1,19 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:buenro_technical_task/core/enums/app_toast_mode.dart';
-import 'package:buenro_technical_task/core/widgets/app_toast/app_toast.dart';
-import 'package:buenro_technical_task/core/widgets/pagination_loading_view.dart';
 import 'package:columnbuilder/columnbuilder.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app_module.dart';
+import '../../../../core/enums/app_toast_mode.dart';
 import '../../../../core/theme/app_dimensions.dart';
 import '../../../../core/widgets/app_error_view.dart';
 import '../../../../core/widgets/app_scaffold.dart';
+import '../../../../core/widgets/app_toast/app_toast.dart';
 import '../../../../core/widgets/navigation_app_bar.dart';
+import '../../../../core/widgets/pagination_loading_view.dart';
 import '../../../../core/widgets/scroll_notification_handler.dart';
 import '../../../../core/widgets/side_title.dart';
 import '../../../../generated/l10n.dart';
@@ -87,7 +87,8 @@ class HotelsPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        if (args?.showAds == true) ...[
+                        if (args?.showAds == true &&
+                            state.response.ads.isNotEmpty) ...[
                           SideTitle(title: translations.ads, icon: Icons.adobe),
                           SizedBox(
                             height: AppModule.I.screenWidth * 0.25,

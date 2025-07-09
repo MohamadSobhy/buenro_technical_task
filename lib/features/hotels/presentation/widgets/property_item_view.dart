@@ -1,11 +1,12 @@
-import 'package:buenro_technical_task/core/widgets/tap_effect.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app_module.dart';
 import '../../../../core/theme/app_dimensions.dart';
 import '../../../../core/theme/app_styles.dart';
+import '../../../../core/widgets/tap_effect.dart';
 import '../../domain/entities/property.dart';
+import 'property_favourite_button.dart';
 
 class PropertyItemView extends StatelessWidget {
   const PropertyItemView({super.key, required this.property});
@@ -28,28 +29,22 @@ class PropertyItemView extends StatelessWidget {
           children: [
             Stack(
               children: [
-                CachedNetworkImage(
-                  imageUrl: property.images.first.thumbnail,
-                  fit: BoxFit.cover,
-                  width: double.maxFinite,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(
+                    AppDimensions.defaultRadius,
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: property.images.isNotEmpty
+                        ? property.images.first.thumbnail
+                        : '',
+                    fit: BoxFit.cover,
+                    width: double.maxFinite,
+                  ),
                 ),
                 Positioned(
                   right: AppDimensions.defaultSidePadding,
                   bottom: AppDimensions.defaultSidePadding,
-                  child: TapEffect(
-                    onTap: () {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: AppModule.I.appColors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.favorite_border,
-                        color: AppModule.I.appColors.primaryColor,
-                      ),
-                    ),
-                  ),
+                  child: PropertyFavouriteButton(property: property),
                 ),
               ],
             ),

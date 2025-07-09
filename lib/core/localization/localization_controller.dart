@@ -11,6 +11,7 @@ class LocalizationController with ChangeNotifier {
   void changeAppLanguage(String locale) {
     if (_currentLocale != locale && isLocaleSupported(locale)) {
       _currentLocale = locale;
+      AppModule.I.currentLangCode = locale;
       notifyListeners();
     }
   }
