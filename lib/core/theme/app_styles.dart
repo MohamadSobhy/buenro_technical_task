@@ -25,6 +25,7 @@ class AppFontWeights {
 abstract class AppStyles {
   AppScaffoldTheme get defaultScaffoldTheme => AppScaffoldTheme();
   ActionButtonTheme get defaultActionButtonTheme => ActionButtonTheme();
+  TextFieldTheme get defaultFieldsTheme => TextFieldTheme();
 
   /// Text Styles
   /// *​Figma Styles ​to App Style Map *
@@ -278,10 +279,10 @@ class DefaultAppShadows extends AppShadows {
 /// The [AppShadows] class defines the shadows used in the app.
 abstract class AppShadows {
   BoxShadow get defaultShadow => BoxShadow(
-        offset: const Offset(0, 2),
-        blurRadius: AppDimensions.radius_12,
-        color: AppModule.I.appColors.black.withOpacity(0.08),
-      );
+    offset: const Offset(0, 2),
+    blurRadius: AppDimensions.radius_12,
+    color: AppModule.I.appColors.black.withOpacity(0.08),
+  );
 
   /// Add any new shadows here
 }
@@ -290,22 +291,24 @@ abstract class AppShadows {
 abstract class AppBorders {
   /// Inputs
   OutlineInputBorder inputBorder = OutlineInputBorder(
-    borderSide: BorderSide(
-      color: AppModule.I.appColors.white.withOpacity(0.1),
-      width: 1.0,
-    ),
-    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+    borderRadius: BorderRadius.circular(AppDimensions.radius_10),
+    borderSide: BorderSide.none,
   );
 
   OutlineInputBorder inputFocusedBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(AppDimensions.radius_10),
+    borderSide: BorderSide.none,
+  );
+
+  OutlineInputBorder inputErrorBorder = OutlineInputBorder(
     borderSide: BorderSide(
-      color: AppModule.I.appColors.white,
+      color: AppModule.I.appColors.redShades.shade60,
       width: 1.0,
     ),
     borderRadius: const BorderRadius.all(Radius.circular(5.0)),
   );
 
-  OutlineInputBorder inputErrorBorder = OutlineInputBorder(
+  OutlineInputBorder inputFocusedErrorBorder = OutlineInputBorder(
     borderSide: BorderSide(
       color: AppModule.I.appColors.redShades.shade60,
       width: 1.0,

@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
     return AutoTabsRouter(
       routes: const [
         OverviewRoute(),
-        HotelsRoute(),
+        HotelsWrapperRoute(),
         FavouritesRoute(),
         AccountWrapperRoute(),
       ],

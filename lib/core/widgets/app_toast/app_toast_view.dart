@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../../app_module.dart';
+import '../../../generated/l10n.dart';
 import '../../enums/app_toast_mode.dart';
 import '../../theme/app_dimensions.dart';
 import 'app_toast.dart';
@@ -28,9 +29,10 @@ class _AppToastViewState extends State<AppToastView>
       vsync: this,
     );
 
-    _animation = Tween(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _animation = Tween(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     _controller.forward();
 
@@ -57,12 +59,14 @@ class _AppToastViewState extends State<AppToastView>
       child: FadeTransition(
         opacity: _animation,
         child: Container(
-          padding: widget.toast.padding ??
+          padding:
+              widget.toast.padding ??
               const EdgeInsets.symmetric(
                 horizontal: AppDimensions.dimen_20,
                 vertical: AppDimensions.dimen_5,
               ),
-          margin: widget.toast.margin ??
+          margin:
+              widget.toast.margin ??
               const EdgeInsets.symmetric(
                 horizontal: AppDimensions.dimen_20,
                 vertical: AppDimensions.dimen_10,
@@ -77,7 +81,7 @@ class _AppToastViewState extends State<AppToastView>
                 color: AppModule.I.appColors.primaryColor.withOpacity(0.1),
                 blurRadius: AppDimensions.radius_15,
                 spreadRadius: -10,
-              )
+              ),
             ],
           ),
           child: Row(
@@ -102,9 +106,10 @@ class _AppToastViewState extends State<AppToastView>
               TextButton(
                 onPressed: widget.toast.onActionTapped ?? _hideToast,
                 child: Text(
-                  widget.toast.actionText ?? 'Close',
-                  style: AppModule.I.appStyles
-                      .text3(color: _getAppropriateCloseTextColor),
+                  widget.toast.actionText ?? S.current.close,
+                  style: AppModule.I.appStyles.text3(
+                    color: _getAppropriateCloseTextColor,
+                  ),
                   // .copyWith(decoration: TextDecoration.underline),
                 ),
               ),

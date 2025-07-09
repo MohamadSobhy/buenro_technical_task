@@ -88,22 +88,16 @@ abstract class AppColors {
   Color? get fieldFillColor => null;
 
   int get redHex => 0xFFDC2A63;
-  MainColor get redShades => MainColor(
-        redHex,
-        <int, Color>{
-          60: const Color(0xFFDC2A63),
-          100: Color(redHex),
-        },
-      );
+  MainColor get redShades => MainColor(redHex, <int, Color>{
+    60: const Color(0xFFDC2A63),
+    100: Color(redHex),
+  });
 
   int get greenHex => 0xFF59C270;
-  MainColor get greenShades => MainColor(
-        greenHex,
-        <int, Color>{
-          60: const Color(0xFF59C270).withOpacity(0.6),
-          100: Color(greenHex),
-        },
-      );
+  MainColor get greenShades => MainColor(greenHex, <int, Color>{
+    60: const Color(0xFF59C270).withOpacity(0.6),
+    100: Color(greenHex),
+  });
 
   Color get primaryColor => const Color.fromRGBO(255, 148, 25, 0.85);
 
@@ -168,9 +162,9 @@ abstract class AppColors {
 
   Color get fieldErrorBorderColor => const Color(0xABFF5E5E);
 
-  Color get shimmerBaseColor => white;
+  Color get shimmerBaseColor => lightCanvasColor;
 
-  Color get shimmerHighlightColor => canvasColor;
+  Color get shimmerHighlightColor => darkCanvasColor;
 }
 
 /// Default App Colors instance.

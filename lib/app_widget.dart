@@ -37,6 +37,9 @@ class BuenroTechnicalTaskApp extends StatelessWidget {
                     : AppDimensions.dimen_16,
               ),
             ),
+        textFieldTheme: AppModule.I.appStyles.defaultFieldsTheme.copyWidth(
+          fillColor: AppModule.I.appColors.darkCanvasColor,
+        ),
         child: const PlatformApp(),
       ),
     );

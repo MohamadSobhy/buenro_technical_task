@@ -22,5 +22,17 @@
     "pt": "Portuguese",
     "de": "German",
     "select_language": "Select Language",
-    "settings": "Settings"
+    "settings": "Settings",
+    "search_for_hotels": "Search for Hotels",
+    "search": "Search",
+    "enter_search_term": "Enter a search term",
+    "close": "Close",
+    "check_in_date": "Check-in Date",
+    "check_out_date": "Check-out Date",
+    "where": "Where?",
+    "fill_missing_fields": "Please fill in all missing fields",
+    "number_of_adults": "Number of Adults",
+    "retry": "Retry",
+    "ads": "Ads",
+    "show_ads": "Show Ads"
 }

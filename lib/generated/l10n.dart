@@ -210,6 +210,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Search for Hotels`
+  String get search_for_hotels {
+    return Intl.message(
+      'Search for Hotels',
+      name: 'search_for_hotels',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a search term`
+  String get enter_search_term {
+    return Intl.message(
+      'Enter a search term',
+      name: 'enter_search_term',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-in Date`
+  String get check_in_date {
+    return Intl.message(
+      'Check-in Date',
+      name: 'check_in_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-out Date`
+  String get check_out_date {
+    return Intl.message(
+      'Check-out Date',
+      name: 'check_out_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Where?`
+  String get where {
+    return Intl.message(
+      'Where?',
+      name: 'where',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please fill in all missing fields`
+  String get fill_missing_fields {
+    return Intl.message(
+      'Please fill in all missing fields',
+      name: 'fill_missing_fields',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of Adults`
+  String get number_of_adults {
+    return Intl.message(
+      'Number of Adults',
+      name: 'number_of_adults',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ads`
+  String get ads {
+    return Intl.message(
+      'Ads',
+      name: 'ads',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show Ads`
+  String get show_ads {
+    return Intl.message(
+      'Show Ads',
+      name: 'show_ads',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

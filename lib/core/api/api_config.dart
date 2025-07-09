@@ -8,7 +8,15 @@ class ApiResource {
     required String checkInDate,
     required String checkOutDate,
     int numberOfAdults = 1,
+    String? nextPageToken,
   }) {
-    return "$_search?q=$query&check_in_date=$checkInDate&check_out_date=$checkOutDate&adults=$numberOfAdults";
+    String url =
+        "$_search?q=$query&check_in_date=$checkInDate&check_out_date=$checkOutDate&adults=$numberOfAdults&engine=google_hotels";
+
+    if (nextPageToken != null && nextPageToken.isNotEmpty) {
+      url += "&next_page_token=$nextPageToken";
+    }
+
+    return url;
   }
 }

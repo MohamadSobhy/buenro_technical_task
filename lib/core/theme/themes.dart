@@ -11,58 +11,57 @@ import '../../app_module.dart';
 /// text styles, and app bar theme.
 abstract class AppThemes {
   ThemeData defaultTheme({bool useMaterial3 = true}) => ThemeData(
-        brightness: Brightness.light,
-        scaffoldBackgroundColor: AppModule.I.appColors.canvasColor,
-        primaryColor: AppModule.I.appColors.primaryColor,
-        canvasColor: AppModule.I.appColors.canvasColor,
-        hintColor: AppModule.I.appColors.canvasColor,
-        splashColor: AppModule.I.appColors.canvasColor.withOpacity(0.3),
-        highlightColor: AppModule.I.appColors.darkTextColor.withOpacity(0.2),
-        colorScheme: ColorScheme.dark(
-          primary: AppModule.I.appColors.primaryColor,
-          secondary: AppModule.I.appColors.white,
-          onPrimary: AppModule.I.appColors.white,
-          onSecondary: AppModule.I.appColors.white,
-          onSurface: AppModule.I.appColors.darkTextColor,
-          brightness: Brightness.light,
-          error: AppModule.I.appColors.redShades.shade60,
-        ),
-        fontFamily: AppModule.I.defaultFontFamily,
-        textTheme: TextTheme(
-          displayLarge: AppModule.I.appStyles.header1(),
-          displayMedium: AppModule.I.appStyles.header2(),
-          displaySmall: AppModule.I.appStyles.header3(),
-          headlineLarge: AppModule.I.appStyles.header4(),
-          headlineMedium: AppModule.I.appStyles.header5(),
-          bodyLarge: AppModule.I.appStyles.text1(),
-          bodyMedium: AppModule.I.appStyles.text3(),
-          bodySmall: AppModule.I.appStyles.text3(),
-        ),
-        progressIndicatorTheme: ProgressIndicatorThemeData(
-          color: AppModule.I.appColors.primaryColor,
-        ),
-        appBarTheme: AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
-          // 2
-          elevation: 0,
-          backgroundColor: AppModule.I.appColors.transparent,
-          shadowColor: AppModule.I.appColors.transparent,
-          centerTitle: true,
-          iconTheme: IconThemeData(
-            color: AppModule.I.appColors.primaryColor,
-          ),
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        cupertinoOverrideTheme: CupertinoThemeData(
-          textTheme: CupertinoTextThemeData(
-            dateTimePickerTextStyle: AppModule.I.appStyles.text2(),
-          ),
-        ),
-        useMaterial3: useMaterial3,
-      );
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: AppModule.I.appColors.canvasColor,
+    primaryColor: AppModule.I.appColors.primaryColor,
+    canvasColor: AppModule.I.appColors.canvasColor,
+    hintColor: AppModule.I.appColors.canvasColor,
+    splashColor: AppModule.I.appColors.canvasColor.withOpacity(0.3),
+    highlightColor: AppModule.I.appColors.darkTextColor.withOpacity(0.2),
+    colorScheme: ColorScheme.dark(
+      primary: AppModule.I.appColors.primaryColor,
+      secondary: AppModule.I.appColors.white,
+      onPrimary: AppModule.I.appColors.white,
+      onSecondary: AppModule.I.appColors.white,
+      onSurface: AppModule.I.appColors.darkTextColor,
+      surface: AppModule.I.appColors.darkCanvasColor,
+      brightness: Brightness.light,
+      error: AppModule.I.appColors.redShades.shade60,
+    ),
+    fontFamily: AppModule.I.defaultFontFamily,
+    textTheme: TextTheme(
+      displayLarge: AppModule.I.appStyles.header1(),
+      displayMedium: AppModule.I.appStyles.header2(),
+      displaySmall: AppModule.I.appStyles.header3(),
+      headlineLarge: AppModule.I.appStyles.header4(),
+      headlineMedium: AppModule.I.appStyles.header5(),
+      bodyLarge: AppModule.I.appStyles.text1(),
+      bodyMedium: AppModule.I.appStyles.text3(),
+      bodySmall: AppModule.I.appStyles.text3(),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppModule.I.appColors.primaryColor,
+    ),
+    appBarTheme: AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
+      // 2
+      elevation: 0,
+      backgroundColor: AppModule.I.appColors.transparent,
+      shadowColor: AppModule.I.appColors.transparent,
+      centerTitle: true,
+      iconTheme: IconThemeData(color: AppModule.I.appColors.primaryColor),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+    ),
+    cupertinoOverrideTheme: CupertinoThemeData(
+      textTheme: CupertinoTextThemeData(
+        dateTimePickerTextStyle: AppModule.I.appStyles.text2(),
+      ),
+    ),
+    useMaterial3: useMaterial3,
+  );
 }
 
 /// Default App Themes instance.
@@ -114,16 +113,17 @@ class ActionButtonTheme {
     this.actionTextSize,
     this.backgroundGradient,
     this.disabledColor,
-  })  : backgroundColor = backgroundColor ?? AppModule.I.appColors.primaryColor,
-        loaderColor = loaderColor ?? AppModule.I.appColors.white,
-        textStyle = textStyle ??
-            AppModule.I.appStyles
-                .text3(color: actionTextColor ?? AppModule.I.appColors.white)
-                .copyWith(
-                  decoration: actionTextDecoration,
-                  fontWeight: actionTextWeight,
-                  fontSize: actionTextSize,
-                );
+  }) : backgroundColor = backgroundColor ?? AppModule.I.appColors.primaryColor,
+       loaderColor = loaderColor ?? AppModule.I.appColors.white,
+       textStyle =
+           textStyle ??
+           AppModule.I.appStyles
+               .text3(color: actionTextColor ?? AppModule.I.appColors.white)
+               .copyWith(
+                 decoration: actionTextDecoration,
+                 fontWeight: actionTextWeight,
+                 fontSize: actionTextSize,
+               );
   ActionButtonTheme copyWith({
     Color? backgroundColor,
     Color? loaderColor,
@@ -162,6 +162,107 @@ class ActionButtonTheme {
       backgroundGradient: backgroundGradient ?? this.backgroundGradient,
       textStyle: textStyle ?? this.textStyle,
       disabledColor: disabledColor ?? this.disabledColor,
+    );
+  }
+}
+
+/// TextFields Theme
+class TextFieldTheme {
+  final InputBorder? border;
+  final InputBorder? focusedBorder;
+  final InputBorder? enabledBorder;
+  final InputBorder? disabledBorder;
+  final InputBorder? errorBorder;
+  final InputBorder? focusedErrorBorder;
+  final Color borderColor;
+  final BorderRadius? borderRadius;
+  final AutovalidateMode? autovalidateMode;
+  final TextSelectionControls? selectionControls;
+  final TextStyle? style;
+  final bool? filled;
+  final Color? fillColor;
+  final TextStyle? labelStyle;
+  final TextStyle? hintStyle;
+  final TextStyle? floatingLabelStyle;
+  final TextStyle? prefixStyle;
+  final TextStyle? errorStyle;
+  final Color? hintColor;
+  final Color? errorFillColor;
+  final Widget Function(bool, {VoidCallback? onClean})? cleanIconBuilder;
+  final Color? suffixIconColor;
+
+  const TextFieldTheme({
+    this.border,
+    this.focusedBorder,
+    this.enabledBorder,
+    this.disabledBorder,
+    this.errorBorder,
+    this.focusedErrorBorder,
+    this.borderColor = Colors.black,
+    this.borderRadius,
+    this.autovalidateMode,
+    this.selectionControls,
+    this.style,
+    this.filled,
+    this.fillColor,
+    this.labelStyle,
+    this.hintStyle,
+    this.floatingLabelStyle,
+    this.prefixStyle,
+    this.errorStyle,
+    this.hintColor,
+    this.errorFillColor,
+    this.cleanIconBuilder,
+    this.suffixIconColor,
+  });
+
+  TextFieldTheme copyWidth({
+    InputBorder? border,
+    InputBorder? focusedBorder,
+    InputBorder? enabledBorder,
+    InputBorder? disabledBorder,
+    InputBorder? errorBorder,
+    InputBorder? focusedErrorBorder,
+    Color? borderColor,
+    BorderRadius? borderRadius,
+    AutovalidateMode? autovalidateMode,
+    TextSelectionControls? selectionControls,
+    TextStyle? style,
+    bool? filled,
+    Color? fillColor,
+    TextStyle? labelStyle,
+    TextStyle? hintStyle,
+    TextStyle? floatingLabelStyle,
+    TextStyle? prefixStyle,
+    TextStyle? errorStyle,
+    Color? hintColor,
+    Color? errorFillColor,
+    Widget Function(bool, {VoidCallback? onClean})? cleanIconBuilder,
+    Color? suffixIconColor,
+  }) {
+    return TextFieldTheme(
+      border: border ?? this.border,
+      focusedBorder: focusedBorder ?? this.focusedBorder,
+      enabledBorder: enabledBorder ?? this.enabledBorder,
+      disabledBorder: disabledBorder ?? this.disabledBorder,
+      errorBorder: errorBorder ?? this.errorBorder,
+      focusedErrorBorder: focusedErrorBorder ?? this.focusedErrorBorder,
+      borderColor: borderColor ?? this.borderColor,
+      borderRadius: borderRadius ?? this.borderRadius,
+      autovalidateMode: autovalidateMode ?? this.autovalidateMode,
+      selectionControls: selectionControls ?? this.selectionControls,
+      style: style ?? this.style,
+      filled: filled ?? this.filled,
+      fillColor: fillColor ?? this.fillColor,
+      labelStyle: labelStyle ?? this.labelStyle,
+      hintStyle: hintStyle ?? this.hintStyle,
+      floatingLabelStyle: floatingLabelStyle ?? this.floatingLabelStyle,
+      prefixStyle: prefixStyle ?? this.prefixStyle,
+      errorStyle: errorStyle ?? this.errorStyle,
+      hintColor: hintColor ?? this.hintColor,
+      errorFillColor: errorFillColor ?? this.errorFillColor,
+      cleanIconBuilder: cleanIconBuilder ?? this.cleanIconBuilder,
+      suffixIconColor: suffixIconColor ?? this.suffixIconColor,
     );
   }
 }

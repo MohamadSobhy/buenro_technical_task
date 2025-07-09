@@ -22,6 +22,7 @@ import '../themes.dart';
 class AppThemesProvider extends InheritedWidget {
   late final AppScaffoldTheme scaffoldTheme;
   late final ActionButtonTheme actionButtonTheme;
+  late final TextFieldTheme textFieldTheme;
 
   static late Widget _child;
 
@@ -29,26 +30,31 @@ class AppThemesProvider extends InheritedWidget {
     super.key,
     AppScaffoldTheme? scaffoldTheme,
     ActionButtonTheme? actionButtonTheme,
+    TextFieldTheme? textFieldTheme,
     required super.child,
   }) {
     _child = child;
     this.scaffoldTheme = scaffoldTheme ?? defaultScaffoldTheme;
     this.actionButtonTheme = actionButtonTheme ?? defaultActionButtonTheme;
+    this.textFieldTheme = textFieldTheme ?? defaultFieldTheme;
   }
 
   static AppScaffoldTheme defaultScaffoldTheme =
       AppModule.I.appStyles.defaultScaffoldTheme;
   static ActionButtonTheme defaultActionButtonTheme =
       AppModule.I.appStyles.defaultActionButtonTheme;
+  static TextFieldTheme defaultFieldTheme =
+      AppModule.I.appStyles.defaultFieldsTheme;
 
   static AppThemesProvider of(BuildContext context) {
-    final provider =
-        context.dependOnInheritedWidgetOfExactType<AppThemesProvider>();
+    final provider = context
+        .dependOnInheritedWidgetOfExactType<AppThemesProvider>();
 
     if (provider == null) {
       return AppThemesProvider(
         scaffoldTheme: defaultScaffoldTheme,
         actionButtonTheme: defaultActionButtonTheme,
+        textFieldTheme: defaultFieldTheme,
         child: _child,
       );
     }

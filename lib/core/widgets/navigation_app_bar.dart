@@ -1,3 +1,4 @@
+import 'package:buenro_technical_task/core/theme/app_dimensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../app_module.dart';
@@ -25,6 +26,7 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       centerTitle: false,
+      leadingWidth: AppDimensions.dimen_24,
     );
   }
 

@@ -26,24 +26,41 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "ads": MessageLookupByLibrary.simpleMessage("Ads"),
         "ar": MessageLookupByLibrary.simpleMessage("Arabic"),
         "change_language":
             MessageLookupByLibrary.simpleMessage("Change Language"),
+        "check_in_date": MessageLookupByLibrary.simpleMessage("Check-in Date"),
+        "check_out_date":
+            MessageLookupByLibrary.simpleMessage("Check-out Date"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
         "de": MessageLookupByLibrary.simpleMessage("German"),
         "defaultErrorMsg": m0,
         "en": MessageLookupByLibrary.simpleMessage("English"),
+        "enter_search_term":
+            MessageLookupByLibrary.simpleMessage("Enter a search term"),
         "et": MessageLookupByLibrary.simpleMessage("Estonian"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
+        "fill_missing_fields": MessageLookupByLibrary.simpleMessage(
+            "Please fill in all missing fields"),
         "hotels": MessageLookupByLibrary.simpleMessage("Hotels"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "no_internet_connection_msg":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
+        "number_of_adults":
+            MessageLookupByLibrary.simpleMessage("Number of Adults"),
         "overview": MessageLookupByLibrary.simpleMessage("Overview"),
         "pt": MessageLookupByLibrary.simpleMessage("Portuguese"),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "search_for_hotels":
+            MessageLookupByLibrary.simpleMessage("Search for Hotels"),
         "select_language":
             MessageLookupByLibrary.simpleMessage("Select Language"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "show_ads": MessageLookupByLibrary.simpleMessage("Show Ads"),
         "unable_to_get_response_msg":
-            MessageLookupByLibrary.simpleMessage("Unable to get response")
+            MessageLookupByLibrary.simpleMessage("Unable to get response"),
+        "where": MessageLookupByLibrary.simpleMessage("Where?")
       };
 }

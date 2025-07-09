@@ -84,6 +84,7 @@ class AppModule {
   late final RouteObserver routeObserver;
 
   void unfocus() => FocusScope.of(_context).unfocus();
+  bool get canPop => Navigator.canPop(_context);
 
   void startApp(Widget app) async => runApp(app);
 }
