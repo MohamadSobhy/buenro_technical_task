@@ -70,7 +70,7 @@ https://github.com/user-attachments/assets/2c6117e2-b30a-4247-9f86-002987ee3ba3
 The environment file includes the folowing values for the API call
 ```
 API_BASE_URL="https://serpapi.com/"
-API_KEY=[Put Your API KEY here]
+API_KEY=[Put Your serpapi API KEY here]
 ```
 
 - Clean the Project
